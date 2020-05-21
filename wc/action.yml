@@ -1,0 +1,10 @@
+name: 'String counter'
+description: 'Count string length'
+inputs:
+  counted_string:
+    description: 'String to be counted'
+    required: true
+outputs:
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

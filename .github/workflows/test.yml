@@ -1,0 +1,22 @@
+name: Max input test
+
+on:
+  issues:
+    types: [opened, reopened]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: extract body
+      id: get_body
+      run: |
+        body=$(cat ${GITHUB_EVENT_PATH} | jq '.issue.body')
+        echo "::set-output name=body::$body"
+    - name: create pull request for version bump
+      uses: ./.github/actions/wc
+      with:
+        counted_string: ${{ steps.get_body.body }}
