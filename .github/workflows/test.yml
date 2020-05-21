@@ -14,7 +14,8 @@ jobs:
     - name: extract body
       id: get_body
       run: |
-        body=$(cat ${GITHUB_EVENT_PATH} | jq '.issue.body')
+        para=$(cat ${GITHUB_EVENT_PATH} | jq '.issue.body')
+        body=$(curl https://loripsum.net/api/$para)
         echo "::set-output name=body::$body"
     - name: count string length
       uses: ./.github/actions/wc
