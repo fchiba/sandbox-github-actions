@@ -19,4 +19,4 @@ jobs:
     - name: count string length
       uses: ./.github/actions/wc
       with:
-        counted_string: ${{ steps.get_body.body }}
+        counted_string: ${{ steps.get_body.outputs.body }}
