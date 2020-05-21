@@ -16,7 +16,7 @@ jobs:
       run: |
         body=$(cat ${GITHUB_EVENT_PATH} | jq '.issue.body')
         echo "::set-output name=body::$body"
-    - name: create pull request for version bump
+    - name: count string length
       uses: ./.github/actions/wc
       with:
         counted_string: ${{ steps.get_body.body }}
